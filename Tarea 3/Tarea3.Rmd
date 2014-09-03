@@ -57,7 +57,7 @@ curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red"
 
 ```{r}
 ##Pregunta 6
-##El numero de observaciones en cada rango
+##El número de observaciones en cada rango
  c(ran1 = sum(x1[,2]<=10), ran2 = sum((x1[,2]<=11) & (x1[,2]>=10)), ran3 = sum((x1[,2]<=12) & (x1[,2]>=11)), ran4 = sum((x1[,2]<=13) & (x1[,2]>=12)), ran5 = sum((x1[,2]<=14) & (x1[,2]>=13)), ran6 = sum((x1[,2]<=15) & (x1[,2]>=14)), ran7 = sum(x1[,2]>=15))
 ##Por lo tanto los rangos con mayores observaciones son ran4 y ran5, es decir entre los tipos de cambio 12-13 y 13-14
 ```
@@ -79,8 +79,27 @@ curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red"
 ```
 
 ```{r}
-
+##Pregunta 9
+ barplot(tabla)
+##Observando la gráfica se puede ver que el día que menos se publica el TC es en lunes
 ```
+
+```{r}
+##Pregunta 10
+ x1$Periodo <- as.POSIXlt(x1[,1])
+ x1$Periodo <- x1[,3]$year + 1900
+##Tuve que sumar 1900 ya que POSIXlt regresa una lista de 9 elementos, y consultando la ayuda ?POSIXlt, pude observar que cuando ocupo el elemento year me regresa los años desde 1900 
+```
+
+```{r}
+##Pregunta 11
+ par(mfrow = c(3,3))
+ for(i in 1:9){
+   hist(x1[,2][x1[,3] == 2005+i], breaks = seq(9.9, 15.4, length.out = 30), xlim = c(9.9, 15.4), ylim = c(0, 120), main = 2005+i,  xlab = "TC")
+ }
+```
+
+
 
 
 
