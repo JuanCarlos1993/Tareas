@@ -99,6 +99,24 @@ curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red"
  }
 ```
 
+```{r}
+##Pregunta 12
+##2006: El tipo de cambio se encuentra acotado entre 10 y 12, la media se encuentra aproximadamante en 11
+##2007: La media se encuentra antes de 11 y hay muy poca desviación estándar
+##2008: El tipo de cambio es muy cambiante, la media se encuentra entre 10 y 11
+##2009: La media se encuentra aproximiadamente en 13, y muy pocos tipos de cambio están después de 15
+##2010: El tipo de cambio se encuentra casi acotado por 12 y 13, pocos valores pasan de 13
+##2011: La gráfica es parecida a la de 2008, con valores mayores que no pasan de 15
+##2012: La media se encuentra antes de 13
+##2013: La mayoría de los valores de aproximan a 13, y se puede observar desviación
+##2014: Hay menos observaciones del tipo de cambio pero la media esta aproximadamente en 13
+```
+
+```{r}
+##Pregunta 13
+```
+
+
 
 
 
