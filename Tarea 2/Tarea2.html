@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
-<meta name="author" content="Juan Carlos Díaz Flores c.u:000132965" />
+<meta name="author" content="Juan Carlos D??az Flores c.u:000132965" />
 
 
 <title>Tarea2</title>
@@ -53,13 +53,14 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id="header">
 <h1 class="title">Tarea2</h1>
-<h4 class="author"><em>Juan Carlos Díaz Flores c.u:000132965</em></h4>
+<h4 class="author"><em>Juan Carlos D??az Flores c.u:000132965</em></h4>
 <h4 class="date"><em>24 de agosto de 2014</em></h4>
 </div>
 
 
-<pre class="r"><code>## Pregunta 1
- library(datasets)
+<div id="pregunta-1" class="section level4">
+<h4>Pregunta 1</h4>
+<pre class="r"><code> library(datasets)
  data(iris)
  ?iris
  iris</code></pre>
@@ -214,9 +215,11 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 ## 148          6.5         3.0          5.2         2.0  virginica
 ## 149          6.2         3.4          5.4         2.3  virginica
 ## 150          5.9         3.0          5.1         1.8  virginica</code></pre>
-<pre class="r"><code>## Mediante la función library cargamos el paquete datasets, con data llamamos a el conjunto de datos iris que es un data.frame, que corresponde a la medida y especies de ciertas plantas.</code></pre>
-<pre class="r"><code>## Pregunta 2
- str(iris)</code></pre>
+<pre class="r"><code>## Mediante la funci??n library cargamos el paquete datasets, con data llamamos a el conjunto de datos iris que es un data.frame, que corresponde a la medida y especies de ciertas plantas.</code></pre>
+</div>
+<div id="pregunta-2" class="section level4">
+<h4>Pregunta 2</h4>
+<pre class="r"><code> str(iris)</code></pre>
 <pre><code>## 'data.frame':    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
@@ -234,16 +237,20 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <pre class="r"><code> class(iris[[5]])</code></pre>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
-<pre class="r"><code>## De igual manera con la función sapply
+<pre class="r"><code>## De igual manera con la funci??n sapply
  sapply(iris, class)</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
 ##    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot;</code></pre>
-<pre class="r"><code>## Pregunta 3
- sum(is.na(iris))</code></pre>
+</div>
+<div id="pregunta-3" class="section level4">
+<h4>Pregunta 3</h4>
+<pre class="r"><code> sum(is.na(iris))</code></pre>
 <pre><code>## [1] 0</code></pre>
 <pre class="r"><code>## El numero total de valores faltantes es 0 </code></pre>
-<pre class="r"><code>## Pregunta 4
-## La suma de las columnas
+</div>
+<div id="pregunta-4" class="section level4">
+<h4>Pregunta 4</h4>
+<pre class="r"><code>## La suma de las columnas
  colSums(iris[,-5])</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
 ##        876.5        458.6        563.7        179.9</code></pre>
@@ -251,8 +258,10 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
  colMeans(iris[,-5])</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
 ##        5.843        3.057        3.758        1.199</code></pre>
-<pre class="r"><code>## Pregunta 5
- ?sapply
+</div>
+<div id="pregunta-5" class="section level4">
+<h4>Pregunta 5</h4>
+<pre class="r"><code> ?sapply
  ?sum
  ?mean
 ## Verificando
@@ -262,27 +271,33 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre class="r"><code> sapply(iris[,-5], mean)</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
 ##        5.843        3.057        3.758        1.199</code></pre>
-<pre class="r"><code>## Pregunta 6
-## Los renglones que cumplen con dicha condición
+</div>
+<div id="pregunta-6" class="section level4">
+<h4>Pregunta 6</h4>
+<pre class="r"><code>## Los renglones que cumplen con dicha condici??n
  which(iris[1]&gt;=5.84)</code></pre>
 <pre><code>##  [1]  51  52  53  55  57  59  62  63  64  66  69  71  72  73  74  75  76
 ## [18]  77  78  79  84  86  87  88  92  98 101 103 104 105 106 108 109 110
 ## [35] 111 112 113 116 117 118 119 120 121 123 124 125 126 127 128 129 130
 ## [52] 131 132 133 134 135 136 137 138 139 140 141 142 144 145 146 147 148
 ## [69] 149 150</code></pre>
-<pre class="r"><code>## Pregunta 7
-## El número de renglones que cumplen con la condición
+</div>
+<div id="pregunta-7" class="section level4">
+<h4>Pregunta 7</h4>
+<pre class="r"><code>## El n??mero de renglones que cumplen con la condici??n
  colSums(iris[1]&gt;=5.84)</code></pre>
 <pre><code>## Sepal.Length 
 ##           70</code></pre>
-<pre class="r"><code>## La suma de los renglones que cumplen con la condición
+<pre class="r"><code>## La suma de los renglones que cumplen con la condici??n
  sum(iris[1][iris[1]&gt;=5.84])</code></pre>
 <pre><code>## [1] 460.6</code></pre>
-<pre class="r"><code>## El promedio de los renglones que cumplen con la condición
+<pre class="r"><code>## El promedio de los renglones que cumplen con la condici??n
  mean(iris[1][iris[1]&gt;=5.84])</code></pre>
 <pre><code>## [1] 6.58</code></pre>
-<pre class="r"><code>## Pregunta 8
- ?subset
+</div>
+<div id="pregunta-8" class="section level4">
+<h4>Pregunta 8</h4>
+<pre class="r"><code> ?subset
 ## Los datos que cumplen con las condiciones
  subset(iris, Species == &quot;setosa&quot; &amp; iris[1]&gt;5.4, select=Sepal.Length)</code></pre>
 <pre><code>##    Sepal.Length
@@ -294,8 +309,10 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre class="r"><code>## Las observaciones que cumplen con las condiciones son
  which((iris[1]&gt;5.4) &amp; iris[5]==&quot;setosa&quot;)</code></pre>
 <pre><code>## [1] 15 16 19 34 37</code></pre>
-<pre class="r"><code>## Pregunta 9
-## Incluimos la especie virginica dadas las condiciones de la pregunta anterior
+</div>
+<div id="pregunta-9" class="section level4">
+<h4>Pregunta 9</h4>
+<pre class="r"><code>## Incluimos la especie virginica dadas las condiciones de la pregunta anterior
  subset(iris, (Species %in% c(&quot;virginica&quot;,&quot;setosa&quot;)) &amp; iris[1]&gt;5.4, select=Sepal.Length)</code></pre>
 <pre><code>##     Sepal.Length
 ## 15           5.8
@@ -352,11 +369,15 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 ## 148          6.5
 ## 149          6.2
 ## 150          5.9</code></pre>
-<pre class="r"><code>## Pregunta 10
-## El código que guarda un archivo con las condiciones es
+</div>
+<div id="pregunta-10" class="section level4">
+<h4>Pregunta 10</h4>
+<pre class="r"><code>## El c??digo que guarda un archivo con las condiciones es
  write.table(tail(iris),file = &quot;UltimasObs.csv&quot;, sep = &quot;,&quot;, row.names = FALSE)</code></pre>
-<pre class="r"><code>## Pregunta 11
- cuadratica  &lt;- function(a,b,c){
+</div>
+<div id="pregunta-11" class="section level4">
+<h4>Pregunta 11</h4>
+<pre class="r"><code> cuadratica  &lt;- function(a,b,c){
    if(((b^2)-4*a*c)&gt;0){
      x1 &lt;- (-b+sqrt((b^2)-4*a*c))/(2*a)
      x2 &lt;- (-b-sqrt((b^2)-4*a*c))/(2*a)
@@ -368,7 +389,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
    } else
      print(&quot;No existe solucion en los reales&quot;)
  }
-## En este ejercicio tuve un problema ya que yo queria escribir la palabra solución con acento, el problema es que cuando le agrego el acento me aparece una combinación rara, creo que es por poner el acento en el código, y ya intete cambiar a UTF-8 pero como utilizo mac no me sirvio.
+## En este ejercicio tuve un problema ya que yo queria escribir la palabra soluci??n con acento, el problema es que cuando le agrego el acento me aparece una combinaci??n rara, creo que es por poner el acento en el c??digo, y ya intete cambiar a UTF-8 pero como utilizo mac no me sirvio.
 
 ## Ejemplos
  cuadratica(a = 3, b = -1 , c = -2)</code></pre>
@@ -377,8 +398,10 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre><code>## [1] -0.6667 -0.6667</code></pre>
 <pre class="r"><code> cuadratica(a = 1, b = 1, c = 1)</code></pre>
 <pre><code>## [1] &quot;No existe solucion en los reales&quot;</code></pre>
-<pre class="r"><code>## Pregunta 12
- anualidad &lt;- function(n,i,P=1,Vencida=TRUE){
+</div>
+<div id="pregunta-12" class="section level4">
+<h4>Pregunta 12</h4>
+<pre class="r"><code> anualidad &lt;- function(n,i,P=1,Vencida=TRUE){
    s &lt;- 0
    for(j in 1:n){
      x1 &lt;- ((1/(1+i))^j)
@@ -401,6 +424,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre class="r"><code> anualidad(n = 15, i = 0.035, P = 5000, Vencida = FALSE)</code></pre>
 <pre><code>## [1] 59603</code></pre>
 <pre class="r"><code>## Cuando aplico estas funciones en la consola si me da los valores con decimales, pero cuando corro en HTML lo redondea  </code></pre>
+</div>
 
 
 </div>

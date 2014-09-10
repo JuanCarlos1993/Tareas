@@ -1,16 +1,25 @@
 ---
 title: "Tarea 3.Rmd"
-author: "Juan Carlos Díaz Flores         c.u:000132965"
+author: "Juan Carlos Díaz Flores         c.u:000132965"
 date: "29 de agosto de 2014"
 output: html_document
 ---
+####Código para obtener el encoding de un archivo
+
+```{r echo = FALSE}
+tipo.archivo <- system("file -I CONAPO.txt", intern = TRUE)
+inicio.encoding <- regexpr("charset=.*", tipo.archivo)
+archivo.encoding <- gsub("charset=", "", substr(tipo.archivo, inicio.encoding, nchar(tipo.archivo)))
+```
+
+
+####Pregunta 1
 
 ```{r}
-##Pregunta 1
  normal  <- function(x){
    1/sqrt(2*pi)*exp((-x^2)/2)
  }
-##Gráfica
+##Gráfica
 curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red", main = expression(paste("Grafica de la funcion   ", over(1,sqrt(2*pi))%.%e^-over(x^2,2))), par(las = 1))
 ##
  abline(v = 0, col = "black")
@@ -19,23 +28,26 @@ curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red"
  text(x = 0, y = 1/sqrt(2*pi), "Valor maximo", pos = 4)
 ```
 
+####Pregunta 2
+
 ```{r}
-##Pregunta 2
  TC.Banxico <- read.table("tipoCambioBanxico.txt", header = TRUE, sep = "|", stringsAsFactors = FALSE)
 ##
  TC.Banxico
 ```
 
+####Pregunta 3
+
 ```{r}
-##Pregunta 3
  ?strptime
  str(TC.Banxico)
  TC.Banxico[,1] <- as.Date(TC.Banxico[,1], format = "%d/%m/%Y")
  str(TC.Banxico)
 ```
 
+####Pregunta 4
+
 ```{r}
-##Pregunta 4
  x1 <- unclass(TC.Banxico[,1])
 ##Máximo
  as.Date(max(x1), origin="1970-01-01")
@@ -45,8 +57,9 @@ curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red"
  as.Date(range(x1), origin="1970-01-01")
 ```
 
+####Pregunta 5
+
 ```{r}
-##Pregunta 5
  options(digits = 5)
  x1 <- subset(TC.Banxico, TC != "N/E")
  x1[,2] <- as.numeric(x1[,2])
@@ -55,52 +68,59 @@ curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red"
  hist(x1[,2], breaks = 56, col = "green", main = "Histograma de TC", xlab = "TC", ylab = "Frecuencia")
 ```
 
-```{r}
-##Pregunta 6
-##El número de observaciones en cada rango
- c(ran1 = sum(x1[,2]<=10), ran2 = sum((x1[,2]<=11) & (x1[,2]>=10)), ran3 = sum((x1[,2]<=12) & (x1[,2]>=11)), ran4 = sum((x1[,2]<=13) & (x1[,2]>=12)), ran5 = sum((x1[,2]<=14) & (x1[,2]>=13)), ran6 = sum((x1[,2]<=15) & (x1[,2]>=14)), ran7 = sum(x1[,2]>=15))
-##Por lo tanto los rangos con mayores observaciones son ran4 y ran5, es decir entre los tipos de cambio 12-13 y 13-14
-```
+####Pregunta 6
 
 ```{r}
-##Pregunta 7
+##El número de observaciones en cada rango
+ c(ran1 = sum(x1[,2]<=10), ran2 = sum((x1[,2]<=11) & (x1[,2]>=10)), ran3 = sum((x1[,2]<=12) & (x1[,2]>=11)), ran4 = sum((x1[,2]<=13) & (x1[,2]>=12)), ran5 = sum((x1[,2]<=14) & (x1[,2]>=13)), ran6 = sum((x1[,2]<=15) & (x1[,2]>=14)), ran7 = sum(x1[,2]>=15))
+##Por lo tanto los rangos con mayores observaciones son ran4 y ran5, es decir entre los tipos de cambio 12-13 y 13-14.
+##La media se encuentra aproximadamente en 11 y 13.
+```
+
+####Pregunta 7
+
+```{r}
  png(file = "HistogramaTC.png", bg = "transparent", units = "px", width = 450, height = 500)
  hist(x1[,2], breaks = 56, col = "green", main = "Histograma de TC", xlab = "TC", ylab = "Frecuencia")
  dev.off()
- 
 ```
 
+####Pregunta 8
+
 ```{r}
-##Pregunta 8
  tabla <- table(weekdays(TC.Banxico$Fecha.DOF), TC.Banxico$TC == "N/E")
  tabla <- tabla[,-1]
  tabla <- tabla[c(2,6,7,5,1)]
  tabla
 ```
 
+####Pregunta 9
+
 ```{r}
-##Pregunta 9
  barplot(tabla)
 ##Observando la gráfica se puede ver que el día que menos se publica el TC es en lunes
 ```
 
+####Pregunta 10
+
 ```{r}
-##Pregunta 10
  x1$Periodo <- as.POSIXlt(x1[,1])
  x1$Periodo <- x1[,3]$year + 1900
 ##Tuve que sumar 1900 ya que POSIXlt regresa una lista de 9 elementos, y consultando la ayuda ?POSIXlt, pude observar que cuando ocupo el elemento year me regresa los años desde 1900 
 ```
 
+####Pregunta 11
+
 ```{r}
-##Pregunta 11
  par(mfrow = c(3,3))
  for(i in 1:9){
    hist(x1[,2][x1[,3] == 2005+i], breaks = seq(9.9, 15.4, length.out = 30), xlim = c(9.9, 15.4), ylim = c(0, 120), main = 2005+i,  xlab = "TC")
  }
 ```
 
+####Pregunta 12
+
 ```{r}
-##Pregunta 12
 ##2006: El tipo de cambio se encuentra acotado entre 10 y 12, la media se encuentra aproximadamante en 11
 ##2007: La media se encuentra antes de 11 y hay muy poca desviación estándar
 ##2008: El tipo de cambio es muy cambiante, la media se encuentra entre 10 y 11
@@ -112,9 +132,52 @@ curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red"
 ##2014: Hay menos observaciones del tipo de cambio pero la media esta aproximadamente en 13
 ```
 
+####Pregunta 13
+
 ```{r}
-##Pregunta 13
+ CONAPO <- read.table("CONAPO.txt", header = TRUE, sep = "@", stringsAsFactors = FALSE)
+ str(CONAPO)
 ```
+
+####Pregunta 14
+
+```{r}
+ options(digits = 14)
+ par(mfrow = c(4, 8), mar = c(0, 0, 1, 0), oma = c(0, 0, 1.2, 0))
+ entidades <- c('Aguascalientes', 'Baja California', 'Baja California Sur', 'Campeche', 'Chiapas', 'Chihuahua', 'Coahuila', 'Colima', 'Distrito Federal', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 'Jalisco', 'México', 'Michoacán', 'Morelos', 'Nayarit', 'Nuevo León', 'Oaxaca', 'Puebla', 'Querétaro', 'Quintana Roo', 'San Luis Potosí', 'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatán', 'Zacatecas')
+ for(i in 1:32){
+   with(CONAPO, plot(0, 0, type = "n", xlim = c(-8.7, 8.7), ylim = c(0, 17), xlab ="", ylab = "", axes = FALSE, bty="n", cex.main = 0.8, main = entidades[i])) 
+   H <- subset(CONAPO[,5],(CONAPO[,3] == "Hombres") & (CONAPO[,1] == 1997) & (CONAPO[,2] == entidades[i]))
+   M <- subset(CONAPO[,5],(CONAPO[,3] == "Mujeres") & (CONAPO[,1] == 1997) & (CONAPO[,2] == entidades[i]))
+   for(j in 1:17){
+     rect(0, j-1, -H[j], j , col = "blue", border = "white")
+     rect(0, j-1, M[j], j , col = "red", border = "white")
+   }
+ }
+ mtext(paste0(1993, " (Hombres, Mujeres)"), side = 3, outer = TRUE)
+```
+
+####Pregunta 15
+
+```{r}
+ png(file = "Piramide1993.png", bg = "white", units = "px", width = 900, height = 700)
+ options(digits = 14)
+ par(mfrow = c(4, 8), mar = c(0, 0, 1, 0), oma = c(0, 0, 1.2, 0))
+ for(i in 1:32){
+   with(CONAPO, plot(0, 0, type = "n", xlim = c(-8.7, 8.7), ylim = c(0, 17), xlab ="", ylab = "", axes = FALSE, bty="n", cex.main = 0.8, main = entidades[i])) 
+   H <- subset(CONAPO[,5],(CONAPO[,3] == "Hombres") & (CONAPO[,1] == 1997) & (CONAPO[,2] == entidades[i]))
+   M <- subset(CONAPO[,5],(CONAPO[,3] == "Mujeres") & (CONAPO[,1] == 1997) & (CONAPO[,2] == entidades[i]))
+   for(j in 1:17){
+     rect(0, j-1, -H[j], j , col = "blue", border = "white")
+     rect(0, j-1, M[j], j , col = "red", border = "white")
+   }
+ }
+ mtext(paste0(1993, " (Hombres, Mujeres)"), side = 3, outer = TRUE)
+ dev.off()
+```
+
+
+
 
 
 

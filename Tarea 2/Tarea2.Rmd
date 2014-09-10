@@ -1,20 +1,22 @@
 ---
 title: "Tarea2"
-author: "Juan Carlos Díaz Flores         c.u:000132965"
+author: "Juan Carlos D铆az Flores         c.u:000132965"
 date: "24 de agosto de 2014"
 output: html_document
 ---
+####Pregunta 1
+
 ```{r}
-## Pregunta 1
  library(datasets)
  data(iris)
  ?iris
  iris
-## Mediante la función library cargamos el paquete datasets, con data llamamos a el conjunto de datos iris que es un data.frame, que corresponde a la medida y especies de ciertas plantas.
+## Mediante la funci贸n library cargamos el paquete datasets, con data llamamos a el conjunto de datos iris que es un data.frame, que corresponde a la medida y especies de ciertas plantas.
 ```
 
+####Pregunta 2
+
 ```{r}
-## Pregunta 2
  str(iris)
 ## Se puede ver que tiene 5 variables y 150 observaciones
  class(iris[[1]])
@@ -22,26 +24,29 @@ output: html_document
  class(iris[[3]])
  class(iris[[4]])
  class(iris[[5]])
-## De igual manera con la función sapply
+## De igual manera con la funci贸n sapply
  sapply(iris, class)
 ```
 
-```{r}
-## Pregunta 3
- sum(is.na(iris))
-## El numero total de valores faltantes es 0 
-```
+####Pregunta 3
 
 ```{r}
-## Pregunta 4
+ sum(is.na(iris))
+## El n煤mero total de valores faltantes es 0 
+```
+
+####Pregunta 4
+
+```{r}
 ## La suma de las columnas
  colSums(iris[,-5])
 ## El promedio de las columnas
  colMeans(iris[,-5])
 ```
 
+####Pregunta 5
+
 ```{r}
-## Pregunta 5
  ?sapply
  ?sum
  ?mean
@@ -50,24 +55,27 @@ output: html_document
  sapply(iris[,-5], mean)
 ```
 
+####Pregunta 6
+
 ```{r}
-## Pregunta 6
-## Los renglones que cumplen con dicha condición
+## Los renglones que cumplen con dicha condici贸n
  which(iris[1]>=5.84)
 ```
 
+####Pregunta 7
+
 ```{r}
-## Pregunta 7
-## El número de renglones que cumplen con la condición
+## El n煤mero de renglones que cumplen con la condici贸n
  colSums(iris[1]>=5.84)
-## La suma de los renglones que cumplen con la condición
+## La suma de los renglones que cumplen con la condici贸n
  sum(iris[1][iris[1]>=5.84])
-## El promedio de los renglones que cumplen con la condición
+## El promedio de los renglones que cumplen con la condici贸n
  mean(iris[1][iris[1]>=5.84])
 ```
 
+####Pregunta 8
+
 ```{r}
-## Pregunta 8
  ?subset
 ## Los datos que cumplen con las condiciones
  subset(iris, Species == "setosa" & iris[1]>5.4, select=Sepal.Length)
@@ -75,20 +83,23 @@ output: html_document
  which((iris[1]>5.4) & iris[5]=="setosa")
 ```
 
+####Pregunta 9
+
 ```{r}
-## Pregunta 9
 ## Incluimos la especie virginica dadas las condiciones de la pregunta anterior
  subset(iris, (Species %in% c("virginica","setosa")) & iris[1]>5.4, select=Sepal.Length)
 ```
 
+####Pregunta 10
+
 ```{r}
-## Pregunta 10
-## El código que guarda un archivo con las condiciones es
+## El c贸digo que guarda un archivo con las condiciones es
  write.table(tail(iris),file = "UltimasObs.csv", sep = ",", row.names = FALSE)
 ```
 
+####Pregunta 11
+
 ```{r}
-## Pregunta 11
  cuadratica  <- function(a,b,c){
    if(((b^2)-4*a*c)>0){
      x1 <- (-b+sqrt((b^2)-4*a*c))/(2*a)
@@ -99,18 +110,17 @@ output: html_document
      x2 <- (-b/(2*a))
      return(c(x1,x2))
    } else
-     print("No existe solucion en los reales")
+     print("No existe soluci贸n en los reales")
  }
-## En este ejercicio tuve un problema ya que yo queria escribir la palabra solución con acento, el problema es que cuando le agrego el acento me aparece una combinación rara, creo que es por poner el acento en el código, y ya intete cambiar a UTF-8 pero como utilizo mac no me sirvio.
-
 ## Ejemplos
  cuadratica(a = 3, b = -1 , c = -2)
  cuadratica(a = 9, b = 12, c = 4)
  cuadratica(a = 1, b = 1, c = 1)
 ```
 
+####Pregunta 12
+
 ```{r}
-## Pregunta 12
  anualidad <- function(n,i,P=1,Vencida=TRUE){
    s <- 0
    for(j in 1:n){
