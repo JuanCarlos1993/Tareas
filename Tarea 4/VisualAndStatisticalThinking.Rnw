@@ -1,0 +1,23 @@
+\documentclass{article}
+
+\begin{document}
+
+\raggedright
+
+{ \setlength{\parskip}{3mm} \Large Visual and Statistical Thinking Displays of Evidence for Making Decisions.
+
+Nombre: Juan Carlos D\'iaz Flores}
+
+{\setlength{\parskip}{7mm} \large Creo que el utilizar herramientas como gr\'aficas siempre ayudan a observar de forma m\'as detallada el fen\'omeno a estudiar, estas herramientas nos acercan al suceso y nos permiten concluir mezcl\'andolos con otras fuentes de informaci\'on, dependiendo de que m\'etodos utilicemos tendremos distintas consecuencias, por tanto creo importante conocer que m\'etodos son m\'as eficientes que otros.}
+
+{\setlength{\parskip}{7mm} \large El 31 de Agosto de 1854 en Broad street se dio el brote de c\'olera, se creia que era debido a que el agua estaba contaminada pero no se observo ninguna impureza, lo raro es que la mayor\'ia de las muertes se dieron cerca de la bomba sobre Broad street, despu\'es se crey\'o que proven\'ia del aire y otros factores.}
+
+{\setlength{\parskip}{7mm} \large Snow al querer encontrar una relaci\'on observando el mapa de las muertes de c\'olera, se dio cuenta de que la mayor\'ia de ellas estaban muy cerca del brote en Broad street y muy pocas estaban alejadas, pero todas ten\'ian una relaci\'on con el agua de la bomba aunque al principio, en la gr\'afica de las muertes claramente se ve que despu\'es del 1 de septiembre fueron disminuyendo, y no corresponde a cuando removieron la bomba que fue el 7, lo cual contradice los resultados; pero si analizamos m\'as detalladamente la gr\'afica es posible observar que despu\'es del 7 de septiembre las muertes disminuyeron en gran cantidad, este fue el mayor aporte de Snow para encontrar la causa, entonces para poder encontrar el problema de raiz es necesario un an\'alisis m\'as complejo; se presenta un problema mayor que se refiere a que los datos no siempre tienen la informaci\'on correcta , ya que no se toman en cuenta ciertas circunstancias, estudios, etc., es decir, se omiten varios datos que pueden ser claves para determinar la causa.}
+
+{\setlength{\parskip}{7mm} \large Lo que implic\'o el desastre del 28 de Enero de 1986 fue que no se tomaron las medidas adecuadas para el lanzamiento, es decir, el riesgo no se tom\'o en cuenta, ese d\'ia debido al frio ten\'ian que revisar los mecanismos y como no lo hicieron despu\'es de ser lanzado el cohete estall\'o, en general la causa fue debido a la temperatura, esta conclusi\'on se obtuvo gracias a las distintas gr\'aficas de informaci\'on que se crearon para analizar el problema(causa), los n\'umeros se encuentran en esa linea delgada entre el \'exito o el fracaso del proyecto, es decir, son decisivos.}
+
+{\setlength{\parskip}{7mm} \large Todas las evidencias utilizadas en gr\'aficas deben estar respaldadas en principios de razonamiento, deben incluir: a) documentar todas las funtes de informaci\'on junto con sus caracter\'isticas, para de esta forma tener un r\'apido acceso a ellas y esto nos permite incluir el segundo punto; b) insistentemente hacer cumplir las comparaciones, con esto logramos obtener mucha informac\'ion acerca de la causa; c) demostrar mecanismos de causa y efecto, si relacionamos estos mecanismos, esto para poder entender el por que del evento, obtendremos mejores resultados y conocimiento acerca de la causa; d) expresar esos mecanismos en forma de cantidad, muchas veces esto ayuda mucho, ya que nos permite obtener o conocer ciertos patrones que a simple vista no eran claros; e) reconocer inherentemente la naturaleza multivariada de los problemas, y por \'ultimo f) evaluar y buscar explicaciones alternas, esto con el objetivo de conocer el problema desde distintos puntos de vista y encontrar puntos en com\'un.}
+
+
+{\setlength{\parskip}{7mm} \large Como conclusi\'on es claro que gracias a el pensamiento estad\'istico, a la ayuda de las gr\'aficas junto con otras fuentes de informaci\'on y otras perspectivas, podemos encontrar las causas principales de los fen\'omenos a observar, y obtener una visi\'on integra del problema.
+\end{document}

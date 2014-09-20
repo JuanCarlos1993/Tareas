@@ -1,6 +1,6 @@
 ---
 title: "PrimerProyecto"
-author: "Juan Carlos D¨ªaz Flores         c.u:000132965"
+author: "Juan Carlos D??az Flores         c.u:000132965"
 date: "16 de agosto de 2014"
 output: html_document
 ---

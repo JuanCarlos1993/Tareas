@@ -1,0 +1,10 @@
+\documentclass{article}
+
+\begin{document}
+
+Statistical Narrative
+Telling Compelling Stories with Numbers
+
+
+
+\end{document}

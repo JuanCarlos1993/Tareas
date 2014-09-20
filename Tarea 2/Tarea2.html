@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
-<meta name="author" content="Juan Carlos D??az Flores c.u:000132965" />
+<meta name="author" content="Juan Carlos Díaz Flores c.u:000132965" />
 
 
 <title>Tarea2</title>
@@ -53,7 +53,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id="header">
 <h1 class="title">Tarea2</h1>
-<h4 class="author"><em>Juan Carlos D??az Flores c.u:000132965</em></h4>
+<h4 class="author"><em>Juan Carlos Díaz Flores c.u:000132965</em></h4>
 <h4 class="date"><em>24 de agosto de 2014</em></h4>
 </div>
 
@@ -215,7 +215,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 ## 148          6.5         3.0          5.2         2.0  virginica
 ## 149          6.2         3.4          5.4         2.3  virginica
 ## 150          5.9         3.0          5.1         1.8  virginica</code></pre>
-<pre class="r"><code>## Mediante la funci??n library cargamos el paquete datasets, con data llamamos a el conjunto de datos iris que es un data.frame, que corresponde a la medida y especies de ciertas plantas.</code></pre>
+<pre class="r"><code>## Mediante la función library cargamos el paquete datasets, con data llamamos a el conjunto de datos iris que es un data.frame, que corresponde a la medida y especies de ciertas plantas.</code></pre>
 </div>
 <div id="pregunta-2" class="section level4">
 <h4>Pregunta 2</h4>
@@ -237,7 +237,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <pre class="r"><code> class(iris[[5]])</code></pre>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
-<pre class="r"><code>## De igual manera con la funci??n sapply
+<pre class="r"><code>## De igual manera con la función sapply
  sapply(iris, class)</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
 ##    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot;</code></pre>
@@ -246,7 +246,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h4>Pregunta 3</h4>
 <pre class="r"><code> sum(is.na(iris))</code></pre>
 <pre><code>## [1] 0</code></pre>
-<pre class="r"><code>## El numero total de valores faltantes es 0 </code></pre>
+<pre class="r"><code>## El número total de valores faltantes es 0 </code></pre>
 </div>
 <div id="pregunta-4" class="section level4">
 <h4>Pregunta 4</h4>
@@ -274,7 +274,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="pregunta-6" class="section level4">
 <h4>Pregunta 6</h4>
-<pre class="r"><code>## Los renglones que cumplen con dicha condici??n
+<pre class="r"><code>## Los renglones que cumplen con dicha condición
  which(iris[1]&gt;=5.84)</code></pre>
 <pre><code>##  [1]  51  52  53  55  57  59  62  63  64  66  69  71  72  73  74  75  76
 ## [18]  77  78  79  84  86  87  88  92  98 101 103 104 105 106 108 109 110
@@ -284,14 +284,14 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="pregunta-7" class="section level4">
 <h4>Pregunta 7</h4>
-<pre class="r"><code>## El n??mero de renglones que cumplen con la condici??n
+<pre class="r"><code>## El número de renglones que cumplen con la condición
  colSums(iris[1]&gt;=5.84)</code></pre>
 <pre><code>## Sepal.Length 
 ##           70</code></pre>
-<pre class="r"><code>## La suma de los renglones que cumplen con la condici??n
+<pre class="r"><code>## La suma de los renglones que cumplen con la condición
  sum(iris[1][iris[1]&gt;=5.84])</code></pre>
 <pre><code>## [1] 460.6</code></pre>
-<pre class="r"><code>## El promedio de los renglones que cumplen con la condici??n
+<pre class="r"><code>## El promedio de los renglones que cumplen con la condición
  mean(iris[1][iris[1]&gt;=5.84])</code></pre>
 <pre><code>## [1] 6.58</code></pre>
 </div>
@@ -372,7 +372,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="pregunta-10" class="section level4">
 <h4>Pregunta 10</h4>
-<pre class="r"><code>## El c??digo que guarda un archivo con las condiciones es
+<pre class="r"><code>## El código que guarda un archivo con las condiciones es
  write.table(tail(iris),file = &quot;UltimasObs.csv&quot;, sep = &quot;,&quot;, row.names = FALSE)</code></pre>
 </div>
 <div id="pregunta-11" class="section level4">
@@ -387,17 +387,15 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
      x2 &lt;- (-b/(2*a))
      return(c(x1,x2))
    } else
-     print(&quot;No existe solucion en los reales&quot;)
+     print(&quot;No existe solución en los reales&quot;)
  }
-## En este ejercicio tuve un problema ya que yo queria escribir la palabra soluci??n con acento, el problema es que cuando le agrego el acento me aparece una combinaci??n rara, creo que es por poner el acento en el c??digo, y ya intete cambiar a UTF-8 pero como utilizo mac no me sirvio.
-
 ## Ejemplos
  cuadratica(a = 3, b = -1 , c = -2)</code></pre>
 <pre><code>## [1]  1.0000 -0.6667</code></pre>
 <pre class="r"><code> cuadratica(a = 9, b = 12, c = 4)</code></pre>
 <pre><code>## [1] -0.6667 -0.6667</code></pre>
 <pre class="r"><code> cuadratica(a = 1, b = 1, c = 1)</code></pre>
-<pre><code>## [1] &quot;No existe solucion en los reales&quot;</code></pre>
+<pre><code>## [1] &quot;No existe solución en los reales&quot;</code></pre>
 </div>
 <div id="pregunta-12" class="section level4">
 <h4>Pregunta 12</h4>

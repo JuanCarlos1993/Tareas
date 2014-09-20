@@ -20,7 +20,7 @@ archivo.encoding <- gsub("charset=", "", substr(tipo.archivo, inicio.encoding, n
    1/sqrt(2*pi)*exp((-x^2)/2)
  }
 ##Gráfica
-curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red", main = expression(paste("Grafica de la funcion   ", over(1,sqrt(2*pi))%.%e^-over(x^2,2))), par(las = 1))
+curve(normal, from = -4, to = 4, xlab = "x", ylab = "f(x)", n = 1000, col= "red", main = expression(paste("Gráfica de la funcion   ", over(1,sqrt(2*pi))%.%e^-over(x^2,2))), par(las = 1))
 ##
  abline(v = 0, col = "black")
 ##
