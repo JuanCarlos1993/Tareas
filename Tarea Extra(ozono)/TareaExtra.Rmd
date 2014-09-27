@@ -1,0 +1,171 @@
+---
+title: "TAREA"
+author: "Juan Carlos Díaz Flores         c.u:000132965"
+date: "26 de septiembre de 2014"
+output: html_document
+---
+
+```{r Ajustes, include = FALSE}
+directorio <- "/Users/jcdf_resident/Documents/ITAM/Estadística Aplicada I/Tareas/Tarea Extra(ozono)"
+setwd(directorio)
+knitr::opts_knit$set(root.dir = directorio)
+# Opciones de la compilacion.
+knitr::opts_chunk$set(fig.path = "FIGURAS/Figuras_", fig.align = 'center', 
+                      fig.height = 10, fig.width = 14, 
+                      cache.path = "CACHE/Cache_", cache = TRUE,
+                      echo = TRUE, eval = TRUE, 
+                      comment = NA, warning = FALSE, message = FALSE)
+```
+
+### Librerias utilizadas
+```{r Librerias, results = 'hide'}
+paquetes.utilizados <- c("reshape2", "tidyr", "xtable", "knitr", 
+                         "dplyr", "plyr", "lubridate", "ggplot2")
+paquetes.instalados <- rownames(installed.packages())
+paquetes.por.instalar <- setdiff(paquetes.utilizados, paquetes.instalados)
+
+# Instala los paquetes faltantes.
+if (length(paquetes.por.instalar) != 0 ) install.packages(paquetes.por.instalar, 
+                                                          repos = "http://cran.us.r-project.org")
+# Carga los paquetes a utilizar.
+lapply(paquetes.utilizados, library, character.only = TRUE)
+```
+
+### "Carga" de datos
+```{r CargarDatosSiniestros}
+ozono <- read.csv("./DATOS/BRUTOS/ConcentracionesOzono.csv", 
+                  stringsAsFactors = FALSE)
+str(ozono)
+head(ozono)
+```
+
+### Organizacion de los datos
+```{r TidyDataMetodo1}
+ozono.m1 <- melt(data = ozono, 
+                 variable.name = "Estacion", 
+                 value.name = "Concentracion", 
+                 id = 1:2)
+```
+
+```{r TidyDataMetodo2}
+ozono.m2 <- gather(data = ozono, 
+                   key = "Estacion", 
+                   value = "Concentracion", 
+                   3:30)
+```
+
+```{r Estructura}
+cat("Metodo 1:")
+head(ozono.m1); tail(ozono.m1)
+cat("Metodo 2:")
+head(ozono.m2); tail(ozono.m2)
+# Utilizaremos la informacion generada por el metodo 2.
+str(ozono.m2)
+summary(ozono.m2)
+```
+
+### Limpieza y procesamiento de los datos 
+```{r LimpiezaProcesamiento}
+# Renombramos los nombres.
+names(ozono.m2)[1:2] <- c("Fecha", "Hora")
+
+# Edicion de variables.
+ozono.m2 <- within(ozono.m2, 
+                   {
+                     # Ajustamos las horas del formato 1-24 horas a 0-23 horas.
+                     Hora <- Hora - 1
+                     # Se sabe que los valores faltantes son aquellos menores a 0.
+                     Concentracion[Concentracion < 0] <- NA
+                     # Cambiamos a la clase Date
+                     Fecha <- as.Date(Fecha, format = "%d/%m/%Y")
+                     }
+                   )
+summary(ozono.m2)
+```
+
+### Almacenamos el archivo procesado
+```{r ArchivoProcesado}
+write.table(ozono.m2, file = "./DATOS/PROCESADOS/ConcentracionesOzono.csv", sep = ",", row.names = FALSE)
+```
+
+### Generamos el diccionario de datos
+```{r Diccionario, results = 'hide'}
+# Generamos la estructura del layout.
+variables <- names(ozono.m2)
+tipos.variables <- tolower(sapply(ozono.m2, class))
+descripcion.variables <- c("Fecha de monitoreo", 
+                           "Hora de monitoreo (0 a 23 horas)", 
+                           "Abreviatura de la estacion", 
+                           "Concentracion promedio del contaminante en partes por millon (ppm)")
+ligas <- c("http://www.aire.df.gob.mx/default.php?opc=%27aKBh%27", 
+           "http://www.aire.df.gob.mx/default.php?opc=%27aKBh%27", 
+           "http://www.aire.df.gob.mx/default.php?opc=%27aKBh%27", 
+           "http://www.aire.df.gob.mx/default.php?opc=%27aKBh%27")
+layout <- cbind(variables, tipos.variables, descripcion.variables, ligas)
+rownames(layout) <- NULL 
+colnames(layout) <- c("Variable", "Tipo", "Descripcion de la variable", "Liga")
+
+# Generamos una tabla con el layout en formato html.
+tabla.descripcion <- print.xtable(xtable(layout), type = "html", sanitize.text.function=function(x){x})
+tabla.descripcion <- gsub("</TH> <TH>","</TH> <TD>", tabla.descripcion)
+
+# Generamos el html en formato md.
+cat(paste0("# Diccionario de datos\n", 
+           "A continuacion se describen las variables utilizadas:\n", 
+           tabla.descripcion, 
+           "\nSe cambio el formato original de las horas.\n\nLas observaciones faltantes para la variable 'Concentracion' se codificaron al valor 'NA' para aquellos valores menores a 0.\n", 
+           "\nFuente: http://www.aire.df.gob.mx/default.php?opc=%27aKBh%27"), 
+    file = "Temporal.md"
+  )
+
+# Genera el layout en formato html y elimina el archivo temporal.
+knit2html(input = "Temporal.md", output = "./DATOS/PROCESADOS/Layout.html")
+unlink("Temporal.md")
+```
+
+### Graficas de ciclo
+```{r CyclePlots, fig.height = 7 , fig.width = 7}
+ozono.m2$Dia <- mday(ozono.m2$Fecha)
+ozono.m2$Mes <- factor(month(ozono.m2$Fecha), 
+                       levels = 1:12, 
+                       labels = month.abb, 
+                       ordered = TRUE)
+# Utilizando la funcion aggregate
+attach(ozono.m2)
+x <- ozono.m2
+attach(x) 
+# Calculamos la concentracion promedio por estacion, mes y dia.
+ozono.m2 <- arrange(aggregate(ozono.m2$Concentracion, by=list(Estacion=Estacion, Mes=Mes, Dia=Dia), FUN=mean, na.rm = TRUE), Estacion, Mes, Dia)
+colnames(ozono.m2)[4] <- "CP.estacion.mes.dia"
+
+Promedio.estacion.mes <- arrange(aggregate(x$Concentracion, by=list(Estacion=Estacion, Mes=Mes), FUN=mean, na.rm = TRUE), Estacion, Mes)
+colnames(Promedio.estacion.mes)[3] <- "CP.estacion.mes"
+
+# Grafica ggplot2.
+p <- ggplot(aes(x = Dia, y = CP.estacion.mes.dia, group = Mes), data = ozono.m2) + 
+     geom_line() +
+     facet_grid(Estacion ~ Mes) + theme_bw() +
+     geom_hline(aes(yintercept = CP.estacion.mes), 
+                data = Promedio.estacion.mes, 
+                colour = "red") 
+print(p)
+```
+
+```
+
+### Tarea Extra
+
+Hacer la agregacion utilizando la funcion `aggregate`.  Es decir, cambie el chunk "CyclePlots" utilizando dicha funcion.
+
+Debera ser individual y entregarse antes del viernes 26 de septiembre.
+
+### Referencias importantes
+
+* [Introduction to dplyr](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html).
+* [Introducing tidyr](http://blog.rstudio.org/2014/07/22/introducing-tidyr/).
+
+### Informacion de la sesion
+```{r SessionInfo}
+sessionInfo()
+```
+
